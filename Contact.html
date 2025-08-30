@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حجز موعد - دكتور حاتم بدران</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2b5e8e;
+            --secondary: #4a8cbd;
+            --accent: #e67e22;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --text: #333;
+            --success: #28a745;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #f5f7f9;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles - Updated from second example */
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(43, 94, 142, 0.98);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .logo img {
+            width: 87px;
+            height: 87px; 
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav ul li {
+            margin-left: 1.2rem;
+            margin-right: 0;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-appointment {
+            background: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+        .nav-appointment:hover {
+            background: #d35400;
+            color: white;
+        }
+        
+        /* Mobile Nav */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .appointment-hero {
+            background: url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .appointment-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .appointment-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .appointment-hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .appointment-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Booking Options */
+        .booking-options {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .options-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            justify-content: center;
+        }
+        
+        .option-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            box-shadow: var(--box-shadow);
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            text-align: center;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .option-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .option-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            background: rgba(43, 94, 142, 0.1);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .option-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .option-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+        
+        .phone-number {
+            display: inline-flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+            margin: 1rem 0;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            background-color: #f0f8ff;
+            transition: var(--transition);
+        }
+        
+        .phone-number:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #25D366;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: var(--transition);
+            gap: 0.5rem;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+        }
+        
+        .clinido-btn {
+            display: block;
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .clinido-btn:hover {
+            background: #d35400;
+            transform: translateY(-3px);
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: right;
+            width: 100%;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(43, 94, 142, 0.1);
+        }
+        
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: var(--transition);
+        }
+        
+        .submit-btn:hover {
+            background: #d35400;
+            transform: translateY(-3px);
+        }
+        
+        /* Notes Section */
+        .important-notes {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            margin: 3rem auto;
+            max-width: 800px;
+            box-shadow: var(--box-shadow);
+            border-right: 4px solid var(--accent);
+        }
+        
+        .important-notes h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .important-notes ul {
+            list-style-type: none;
+        }
+        
+        .important-notes li {
+            margin-bottom: 0.8rem;
+            padding-right: 1.5rem;
+            position: relative;
+            line-height: 1.8;
+        }
+        
+        .important-notes li:before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+            font-size: 1.5rem;
+        }
+        
+        /* Location Section */
+        .location-section {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .location-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .location-info {
+            padding: 2.5rem;
+        }
+        
+        .location-info h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .location-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .location-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .location-details p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .location-details i {
+            color: var(--primary);
+            width: 20px;
+        }
+        
+        .map-container {
+            height: 350px;
+            border-top: 1px solid #eee;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+       .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px; /* Changed from left: 30px to right: 30px */
+            background: #e67e22;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            font-size: 1.4rem;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: #d35400;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            nav ul li {
+                margin-left: 0.8rem;
+            }
+            
+            nav ul li a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.9rem;
+            }
+            
+            .nav-appointment {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .appointment-hero {
+                padding: 4rem 0;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: right;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 0;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .appointment-hero p {
+                font-size: 1rem;
+            }
+            
+            .phone-number {
+                font-size: 1.3rem;
+                padding: 0.6rem 1.2rem;
+            }
+            
+            .option-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .location-info {
+                padding: 1.5rem;
+            }
+            
+            .important-notes {
+                padding: 1.5rem;
+            }
+            
+            .nav-appointment {
+                margin: 0.5rem 0;
+                display: block;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .options-container {
+                gap: 2rem;
+            }
+            
+            .option-card {
+                min-width: 100%;
+            }
+            
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation from second example -->
+    <header id="main-header">
+        <div class="container header-content">
+            <div class="logo" onclick="location.href='index.html'">
+                <img src="Images-Demo1/Screenshot_2025-08-30_032520-removebg-preview.png" alt="Logo">
+                <h1>أ.د. حاتم بدران</h1>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="index.html#about">عن الدكتور</a></li>
+                    <li><a href="index.html#specializations">التخصصات</a></li>
+                    <li><a href="index.html#experience">الخبرة</a></li>
+                    <li><a href="index.html#research">الأبحاث</a></li>
+                    <li><a href="index.html#locations">العيادات</a></li>
+                    <li><a href="Contact.html" class="nav-appointment">احجز موعد</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+   <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    <!-- Hero Section -->
+    <section class="appointment-hero">
+        <div class="container appointment-hero-content">
+            <h2>حجز موعد مع الدكتور حاتم بدران</h2>
+            <p>نحن هنا لمساعدتك في تحديد موعدك بسهولة وسرعة. اختر الطريقة المناسبة لك للحجز</p>
+        </div>
+    </section>
+
+    <!-- Booking Options -->
+    <section class="booking-options">
+        <div class="container">
+            <h2 class="section-title">طرق الحجز المتاحة</h2>
+            
+            <div class="options-container">
+                <!-- Option A: Call/WhatsApp -->
+                <div class="option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>الحجز عبر الهاتف</h3>
+                    <p>اتصل بنا مباشرة لحجز موعدك أو استفسر عن أي استفسارات</p>
+                    <a href="tel:+201092667448" class="phone-number">
+                        <i class="fas fa-phone"></i> +20 109 266 7448
+                    </a>
+                    <a href="https://wa.me/201092667448" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> واتساب
+                    </a>
+                </div>
+                
+                <!-- Option B: Online Form -->
+                <div class="option-card">
+                    <div class="option-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>الحجز الإلكتروني</h3>
+                    <p>احجز موعدك عبر منصة كلي نيدو الإلكترونية بسهولة وأمان</p>
+                    <a href="https://clinido.com/ar/drprofile/9704/1624?srsltid=AfmBOoqUFB9jpeHgKxlEAW-8aRS76uaL_ZGui0C-5rdI79mAbWpaZ8kd" 
+                       target="_blank" class="clinido-btn">
+                        <i class="fas fa-external-link-alt"></i> الحجز عبر كلي نيدو
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Important Notes -->
+            <div class="important-notes">
+                <h3><i class="fas fa-info-circle"></i> ملاحظات هامة</h3>
+                <ul>
+                    <li>يجب تأكيد الموعد من خلال العيادة</li>
+                    <li>في الحالات الطارئة، يرجى الاتصال مباشرة على الرقم أعلاه</li>
+                    <li>يرجى الحضور قبل موعدك بـ 10 دقائق على الأقل</li>
+                    <li>لإلغاء الموعد، يرجى الإلغاء قبل 24 ساعة على الأقل</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">معلومات العيادة</h2>
+            
+            <div class="location-card">
+                <div class="location-info">
+                    <h3>موقع العيادة</h3>
+                    <div class="location-details">
+                        <p><i class="fas fa-map-marker-alt"></i> مول بدر الدين، الطابق الأول، الشيخ زايد، الجيزة، مصر</p>
+                        <p><i class="fas fa-clock"></i> السبت - الخميس: 5:00 مساءً - 7:00 مساءً | الجمعة: مغلق</p>
+                        <p><i class="fas fa-money-bill-wave"></i> رسوم الكشف: 600 جنيه</p>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.238229510936!2d31.017415175337!3d30.028918974926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145846c9307e5f1f%3A0xdaa54f4e91c2b4f5!2sSheikh%20Zayed%20City%2C%20Giza%20Governorate!5e0!3m2!1sen!2seg!4v1684567890123!5m2!1sen!2seg" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 دكتور حاتم بدران - أستاذ الأنف والأذن والحنجرة. جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-researchgate"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('active');
+        }
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('main-header');
+            if (window.pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('main-nav').classList.remove('active');
+            });
+        });
+        
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            const dateInput = document.getElementById('date');
+            if(dateInput) {
+                dateInput.setAttribute('min', today);
+            }
+        });
+                // Back to top button functionality
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        </script>
+</body>
+</html>
