@@ -280,28 +280,6 @@
             transform: translateY(-3px);
         }
         
-        .clinido-btn {
-            display: block;
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: var(--border-radius);
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: var(--transition);
-            text-decoration: none;
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-        
-        .clinido-btn:hover {
-            background: #d35400;
-            transform: translateY(-3px);
-        }
-        
         /* Form Styles */
         .form-group {
             margin-bottom: 1.5rem;
@@ -521,7 +499,9 @@
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
         }
-        
+        .fas.fa-clock{
+            margin-bottom: -90px;
+        }
         /* Responsive */
         @media (max-width: 992px) {
             nav ul li {
@@ -636,7 +616,7 @@
     <div class="container header-content">
         <div class="logo" onclick="location.href='index.html'">
             <img src="Images-Demo1/Screenshot_2025-08-30_032520-removebg-preview.png" alt="Logo">
-            <h1>أ.د. حاتم بدران</h1>
+            <h1>أ.د حاتم بدران</h1>
         </div>
         <button class="mobile-menu-btn" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -665,7 +645,7 @@
 <!-- Hero Section -->
 <section class="appointment-hero">
     <div class="container appointment-hero-content">
-        <h2>حجز موعد مع الدكتور حاتم بدران</h2>
+        <h2>حجز موعد مع أ.د حاتم بدران</h2>
         <p>نحن هنا لمساعدتك في تحديد موعدك بسهولة وسرعة. اختر الطريقة المناسبة لك للحجز.</p>
     </div>
 </section>
@@ -684,23 +664,10 @@
                 <h3>الحجز عبر الهاتف</h3>
                 <p>اتصل بنا مباشرة لحجز موعدك أو استفسر عن أي استفسارات</p>
                 <a href="tel:+201092667448" class="phone-number">
-                    <i class="fas fa-phone"></i> +20 109 266 7448
+                    <i class="fas fa-phone"></i>109 266 7448 20+
                 </a>
                 <a href="https://wa.me/201092667448" class="whatsapp-btn" target="_blank">
                     <i class="fab fa-whatsapp"></i> واتساب
-                </a>
-            </div>
-            
-            <!-- Option B: Online Form -->
-            <div class="option-card">
-                <div class="option-icon">
-                    <i class="fas fa-calendar-check"></i>
-                </div>
-                <h3>الحجز الإلكتروني</h3>
-                <p>احجز موعدك عبر منصة كلي نيدو الإلكترونية بسهولة وأمان</p>
-                <a href="https://clinido.com/ar/drprofile/9704/1624?srsltid=AfmBOoqUFB9jpeHgKxlEAW-8aRS76uaL_ZGui0C-5rdI79mAbWpaZ8kd" 
-                   target="_blank" class="clinido-btn">
-                    <i class="fas fa-external-link-alt"></i> الحجز عبر كلي نيدو
                 </a>
             </div>
         </div>
@@ -711,7 +678,7 @@
             <ul>
                 <li>يجب تأكيد الموعد من خلال العيادة</li>
                 <li>في الحالات الطارئة، يرجى الاتصال مباشرة على الرقم أعلاه</li>
-                <li>يرجى الحضور قبل موعدك بـ ١٠ دقائق على الأقل</li>
+                <li>الكشف بأسبقية الحضور</li>
                 <li>لإلغاء الموعد، يرجى الإلغاء قبل ٢٤ ساعة على الأقل</li>
             </ul>
         </div>
@@ -728,7 +695,9 @@
                 <h3>موقع العيادة</h3>
                 <div class="location-details">
                     <p><i class="fas fa-map-marker-alt"></i> مول بدر الدين، الطابق الأول، الشيخ زايد، الجيزة، مصر</p>
-                    <p><i class="fas fa-clock"></i> السبت - الخميس: ٥:٠٠ م – ٧:٠٠ م | الجمعة: مغلق</p>
+                    <p><i class="fas fa-clock"></i>السبت:<br> من ٢ - ٦ مساء <br><br>
+من الأحد للأربعاء:<br> من ٥ - ٧ مساء <br><br>
+الخميس:<br> من ٢ - ٤ مساء <br><br></p>
                     <p><i class="fas fa-money-bill-wave"></i> رسوم الكشف: ٦٠٠ جنيه</p>
                 </div>
             </div>
@@ -802,7 +771,4 @@
         });
         </script>
 </body>
-
 </html>
-
-
