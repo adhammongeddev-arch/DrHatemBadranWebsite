@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تقييمات دكتور حاتم بدران - أستاذ الأنف والأذن والحنجرة</title>
+    <link rel="icon" type="image/png" href="Images-Demo1/Screenshot_2025-08-30_032520-removebg-preview_900x924.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Images-Demo1/Screenshot_2025-08-30_032520-removebg-preview_16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Images-Demo1/Screenshot_2025-08-30_032520-removebg-preview_32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="Images-Demo1/Screenshot_2025-08-30_032520-removebg-preview_48x48.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -602,7 +606,42 @@
             background: #d35400;
             transform: translateY(-3px);
         }
+         footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
         
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .social-links a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
         /* Responsive */
         @media (max-width: 768px) {
             .header-content {
@@ -654,6 +693,729 @@
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
         }
+        @media (max-width: 992px) {
+            nav ul li {
+                margin-left: 0.8rem;
+            }
+            
+            nav ul li a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.9rem;
+            }
+            
+            .nav-appointment {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .appointment-hero {
+                padding: 4rem 0;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: right;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 0;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .appointment-hero p {
+                font-size: 1rem;
+            }
+            
+            .phone-number {
+                font-size: 1.3rem;
+                padding: 0.6rem 1.2rem;
+            }
+            
+            .option-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .location-info {
+                padding: 1.5rem;
+            }
+            
+            .important-notes {
+                padding: 1.5rem;
+            }
+            
+            .nav-appointment {
+                margin: 0.5rem 0;
+                display: block;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .options-container {
+                gap: 2rem;
+            }
+            
+            .option-card {
+                min-width: 100%;
+            }
+            
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav ul li {
+            margin-left: 1.2rem;
+            margin-right: 0;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-appointment {
+            background: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+        .nav-appointment:hover {
+            background: #d35400;
+            color: white;
+        }
+        
+        /* Mobile Nav */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section - Fixed Icons */
+        .appointment-hero {
+            background: url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+        }
+        
+        .appointment-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .appointment-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .appointment-hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .appointment-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Hero Social Icons - Fixed */
+        .hero-social {
+            position: relative;
+            z-index: 1;
+            margin-top: 2rem;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .hero-social p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .hero-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero-social-links a {
+            color: white;
+            font-size: 1.8rem;
+            transition: var(--transition);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hero-social-links a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .social-links a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            nav ul li {
+                margin-left: 0.8rem;
+            }
+            
+            nav ul li a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.9rem;
+            }
+            
+            .nav-appointment {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .appointment-hero {
+                padding: 4rem 0;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-social-links a {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: right;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 0;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .appointment-hero {
+                padding: 3rem 0;
+                min-height: 60vh;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .appointment-hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-social-links {
+                gap: 1rem;
+            }
+            
+            .hero-social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .phone-number {
+                font-size: 1.3rem;
+                padding: 0.6rem 1.2rem;
+            }
+            
+            .option-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .location-info {
+                padding: 1.5rem;
+            }
+            
+            .important-notes {
+                padding: 1.5rem;
+            }
+            
+            .nav-appointment {
+                margin: 0.5rem 0;
+                display: block;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .options-container {
+                gap: 2rem;
+            }
+            
+            .option-card {
+                min-width: 100%;
+            }
+            
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 1.6rem;
+            }
+            
+            .appointment-hero p {
+                font-size: 0.95rem;
+            }
+            
+            .hero-social p {
+                font-size: 1rem;
+            }
+            
+            .hero-social-links {
+                gap: 0.8rem;
+            }
+            
+            .hero-social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+        }
+       .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px; /* Changed from left: 30px to right: 30px */
+            background: #e67e22;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            font-size: 1.4rem;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: #d35400;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        .fas.fa-clock{
+            margin-bottom: -90px;
+        }
+        /* Responsive */
+        @media (max-width: 992px) {
+            nav ul li {
+                margin-left: 0.8rem;
+            }
+            
+            nav ul li a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.9rem;
+            }
+            
+            .nav-appointment {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .appointment-hero {
+                padding: 4rem 0;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: right;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 0;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .appointment-hero p {
+                font-size: 1rem;
+            }
+            
+            .phone-number {
+                font-size: 1.3rem;
+                padding: 0.6rem 1.2rem;
+            }
+            
+            .option-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .location-info {
+                padding: 1.5rem;
+            }
+            
+            .important-notes {
+                padding: 1.5rem;
+            }
+            
+            .nav-appointment {
+                margin: 0.5rem 0;
+                display: block;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .options-container {
+                gap: 2rem;
+            }
+            
+            .option-card {
+                min-width: 100%;
+            }
+            
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+        }
+        .hero-social-links {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+ 
+.hero-social-links {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Colored logos */
+        .hero-social-links a[title="Facebook"] i { color: #1877f2; }
+        .hero-social-links a[title="ResearchGate"] i { color: #00ccbb; }
+        .hero-social-links a[title="YouTube"] i { color: #ff0000; }
+        .hero-social-links a[title="TikTok"] i { color: #000000; }
+        .hero-social-links a[title="Instagram"] i { 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-social-links a::after {
+            content: attr(title);
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-social-links a::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: inherit;
+            filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .hero-social-links a:hover::after {
+            opacity: 1;
+        }
+        
+        .hero-social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero-social-links a:hover::before {
+            opacity: 0.6;
+        }
+        
+        /* Platform-specific hover effects */
+        .hero-social-links a[title="Facebook"]:hover { background-color: #1877F2}
+        .hero-social-links a[title="ResearchGate"]:hover { background-color: #40BA9B }
+        .hero-social-links a[title="YouTube"]:hover { background-color: #FF0000 }
+        .hero-social-links a[title="TikTok"]:hover { background-color: rgba(0, 0, 0, 0.1); }
+        .hero-social-links a[title="Instagram"]:hover { background-color: #d62976 }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero-social-links {
+                gap: 1rem;
+            }
+            
+            .hero-social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-social-links {
+                gap: 0.8rem;
+            }
+            
+            .hero-social-links a {
+                width: 46px;
+                height: 46px;
+                font-size: 1.1rem;
+            }
+            
+            .hero-social-links a::after {
+                font-size: 0.7rem;
+                bottom: -35px;
+                padding: 4px 8px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+        @media (min-width: 768px){
+            .hero-social-links{
+                margin-top: 60px;
+            }
+        }
+        .footer {
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
@@ -678,7 +1440,7 @@
                 </ul>
             </nav>
         </div>
-    </header>
+        </header>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -688,6 +1450,13 @@
                     <i class="fab fa-google"></i> اكتب تقييم على Google
                 </a>
             </div>
+        </div>
+        <div class="hero-social-links">
+            <a href="https://www.facebook.com/share/1ScdKGquB2/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.researchgate.net/profile/Hatem-Badran" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+            <a href="https://youtube.com/user/tomybedro" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@badran.ent?_t=ZS-8wjKV9OJjaU&_r=1" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/badranentclinic?igshid=9p51dfbs2o5b" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
     </section>
 
