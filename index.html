@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دكتور حاتم بدران - أستاذ الأنف والأذن والحنجرة</title>
+    <link rel="icon" type="image/png" href="Images-Demo1/Screenshot_2025-08-30_032520-removebg-preview_900x924.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="Images-Demo1/Screenshot_2025-08-30_032520-removebg-preview_16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Images-Demo1/Screenshot_2025-08-30_032520-removebg-preview_32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="Images-Demo1/Screenshot_2025-08-30_032520-removebg-preview_48x48.png">
+    <title>دكتور حاتم بدران </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -279,90 +283,310 @@
             margin-bottom: 1rem;
         }
         
-        /* Experience */
-         .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: var(--secondary);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-        
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border: 4px solid var(--accent);
-            border-radius: 50%;
-            top: 15px;
-            right: -13px;
-            z-index: 1;
-        }
-        
-        .left {
-            left: -50%;
-        }
-        
-        .right {
-            left: 0%;
-        }
-        
-        .right::after {
-            left: -13px;
-        }
-        
-        .timeline-content {
-            padding: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        /* Research */
-        .research-stats {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-        
-        .stat {
-            text-align: center;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            min-width: 150px;
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        .stat-label {
-            color: var(--dark);
-            font-weight: 500;
-        }
+        #research {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.research-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat {
+    text-align: center;
+    background: white;
+    padding: 2rem 1rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid #f0f0f0;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+}
+
+.stat:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.8rem;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.stat-label {
+    color: var(--dark);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Research Highlight */
+.research-highlight {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 3rem auto;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(43, 94, 142, 0.3);
+}
+
+.highlight-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.highlight-content i {
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.highlight-content p {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Research Details */
+.research-details {
+    margin-top: 3rem;
+}
+
+.research-details h3 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.research-topics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.topic-category {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--accent);
+}
+
+.topic-category h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+}
+
+.topic-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.topic-category li {
+    padding: 0.5rem 0;
+    padding-right: 1.5rem;
+    position: relative;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.topic-category li:before {
+    content: '•';
+    color: var(--accent);
+    font-weight: bold;
+    position: absolute;
+    right: 0;
+    font-size: 1.2rem;
+}
+
+.topic-category li:last-child {
+    border-bottom: none;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .research-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+    
+    .stat {
+        padding: 1.5rem 1rem;
+    }
+    
+    .stat-number {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #research {
+        padding: 3rem 0;
+    }
+    
+    .research-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 400px;
+    }
+    
+    .stat {
+        padding: 1.5rem;
+    }
+    
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .highlight-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
+    
+    .highlight-content p {
+        font-size: 1.1rem;
+    }
+    
+    .research-topics {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .topic-category {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .research-stats {
+        gap: 0.8rem;
+    }
+    
+    .stat {
+        padding: 1.2rem 0.8rem;
+    }
+    
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label {
+        font-size: 0.9rem;
+    }
+    
+    .research-highlight {
+        padding: 1.5rem;
+        margin: 2rem auto;
+    }
+    
+    .highlight-content p {
+        font-size: 1rem;
+    }
+    
+    .topic-category {
+        padding: 1.2rem;
+    }
+    
+    .topic-category h4 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Animation */
+@keyframes statFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat {
+    animation: statFadeIn 0.6s ease forwards;
+}
+
+.stat:nth-child(1) { animation-delay: 0.1s; }
+.stat:nth-child(2) { animation-delay: 0.2s; }
+.stat:nth-child(3) { animation-delay: 0.3s; }
+.stat:nth-child(4) { animation-delay: 0.4s; }
+
+/* Hover effects for better interactivity */
+@media (hover: hover) {
+    .stat:hover .stat-icon {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+}
+
+/* Touch devices optimization */
+@media (max-width: 768px) {
+    .stat:active {
+        transform: scale(0.98);
+    }
+    
+    .topic-category:active {
+        transform: translateY(-2px);
+    }
+}
         
         /* Locations */
      .location-cards {
@@ -672,6 +896,42 @@
             background: #d35400;
             transform: translateY(-3px);
         }
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .social-links a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
         
         /* Responsive */
         @media (max-width: 992px) {
@@ -689,8 +949,18 @@
                 font-size: 0.9rem;
             }
             
-            .clinic-features ul {
-                grid-template-columns: 1fr;
+            .appointment-hero {
+                padding: 4rem 0;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-social-links a {
+                width: 55px;
+                height: 55px;
+                font-size: 1.6rem;
             }
         }
         
@@ -730,30 +1000,44 @@
                 display: block;
             }
             
-            .timeline::after {
-                left: 31px;
+            .appointment-hero {
+                padding: 3rem 0;
+                min-height: 60vh;
             }
             
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
+            .appointment-hero h2 {
+                font-size: 1.8rem;
             }
             
-            .timeline-item::after {
-                left: 18px;
+            .appointment-hero p {
+                font-size: 1rem;
             }
             
-            .left, .right {
-                left: 0;
+            .hero-social-links {
+                gap: 1rem;
             }
             
-            .hero h2 {
-                font-size: 2rem;
+            .hero-social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
             }
             
-            .logo h1 {
-                font-size: 1.2rem;
+            .phone-number {
+                font-size: 1.3rem;
+                padding: 0.6rem 1.2rem;
+            }
+            
+            .option-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .location-info {
+                padding: 1.5rem;
+            }
+            
+            .important-notes {
+                padding: 1.5rem;
             }
             
             .nav-appointment {
@@ -761,38 +1045,610 @@
                 display: block;
                 text-align: center;
             }
+        }
+        
+        @media (max-width: 576px) {
+            .options-container {
+                gap: 2rem;
+            }
             
-            .location-cards {
-                grid-template-columns: 1fr;
+            .option-card {
+                min-width: 100%;
+            }
+            
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 1.6rem;
+            }
+            
+            .appointment-hero p {
+                font-size: 0.95rem;
+            }
+            
+            .hero-social p {
+                font-size: 1rem;
+            }
+            
+            .hero-social-links {
+                gap: 0.8rem;
+            }
+            
+            .hero-social-links a {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
             }
         }
-        .research-stats {
+       .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px; /* Changed from left: 30px to right: 30px */
+            background: #e67e22;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            font-size: 1.4rem;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: #d35400;
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        .fas.fa-clock{
+            margin-bottom: -90px;
+        }
+        /* Responsive */
+        @media (max-width: 992px) {
+            nav ul li {
+                margin-left: 0.8rem;
+            }
+            
+            nav ul li a {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.9rem;
+            }
+            
+            .nav-appointment {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .appointment-hero {
+                padding: 4rem 0;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (min-width: 768px){
+            .hero-social-links{
+                margin-top: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                text-align: right;
+            }
+            
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                margin-top: 0;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .appointment-hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .appointment-hero p {
+                font-size: 1rem;
+            }
+            
+            .phone-number {
+                font-size: 1.3rem;
+                padding: 0.6rem 1.2rem;
+            }
+            
+            .option-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .location-info {
+                padding: 1.5rem;
+            }
+            
+            .important-notes {
+                padding: 1.5rem;
+            }
+            
+            .nav-appointment {
+                margin: 0.5rem 0;
+                display: block;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .options-container {
+                gap: 2rem;
+            }
+            
+            .option-card {
+                min-width: 100%;
+            }
+            
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+        }
+        .hero-social-links {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+ 
+.hero-social-links {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
         }
         
-        .stat {
-            text-align: center;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            min-width: 150px;
+        .hero-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary)
+        /* Colored logos */
+        .hero-social-links a[title="Facebook"] i { color: #1877f2; }
+        .hero-social-links a[title="ResearchGate"] i { color: #00ccbb; }
+        .hero-social-links a[title="YouTube"] i { color: #ff0000; }
+        .hero-social-links a[title="TikTok"] i { color: #000000; }
+        .hero-social-links a[title="Instagram"] i { 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        .stat-label {
-            color: var(--dark);
+        .hero-social-links a::after {
+            content: attr(title);
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
             font-weight: 500;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
+        .hero-social-links a::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            background: inherit;
+            filter: blur(5px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .hero-social-links a:hover::after {
+            opacity: 1;
+        }
+        
+        .hero-social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero-social-links a:hover::before {
+            opacity: 0.6;
+        }
+        
+        /* Platform-specific hover effects */
+        .hero-social-links a[title="Facebook"]:hover { background-color: #1877F2}
+        .hero-social-links a[title="ResearchGate"]:hover { background-color: #40BA9B }
+        .hero-social-links a[title="YouTube"]:hover { background-color: #FF0000 }
+        .hero-social-links a[title="TikTok"]:hover { background-color: rgba(0, 0, 0, 0.1); }
+        .hero-social-links a[title="Instagram"]:hover { background-color: #d62976 }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero-social-links {
+                gap: 1rem;
+            }
+            
+            .hero-social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-social-links {
+                gap: 0.8rem;
+            }
+            
+            .hero-social-links a {
+                width: 46px;
+                height: 46px;
+                font-size: 1.1rem;
+            }
+            
+            .hero-social-links a::after {
+                font-size: 0.7rem;
+                bottom: -35px;
+                padding: 4px 8px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+        
+        .footer {
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        #experience {
+    padding: 3rem 0;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+@media (min-width: 768px){
+    .timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    width: 5px;
+    background: linear-gradient(to bottom, var(--primary), var(--accent));
+    border-radius: 2px;
+
+}
+ }
+ @media (min-width: 768px){
+    .timeline-item {
+     position: relative;
+     margin-bottom: 3rem;
+     width: 100%;
+     margin-right: 285px;
+}
+.Baka{
+    margin-right: 285px;
+}
+.Nani{
+    margin-right: 70px;
+}
+ }
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    width: 100%;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border: 4px solid white;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 0 4px var(--accent);
+}
+
+.timeline-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin: 0 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-date {
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+.timeline-content h3 {
+    color: var(--primary);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.timeline-content p {
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Desktop Layout */
+@media (min-width: 768px) {
+    .timeline-item {
+        width: 45%;
+        margin-bottom: 4rem;
+    }
+    
+    .timeline-item:nth-child(odd) {
+        right: 0;
+        text-align: left;
+    }
+    
+    .timeline-item:nth-child(even) {
+        right: 55%;
+        text-align: left;
+    }
+    
+    .timeline-item::before {
+        right: calc(50% - 10px);
+    }
+    
+    .timeline-item:nth-child(odd)::before {
+        right: calc(50% - 12px);
+    }
+    
+    .timeline-item:nth-child(even)::before {
+        right: calc(50% - 8px);
+    }
+    
+    .timeline-content {
+        margin: 0;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+        margin-left: 2rem;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+        margin-right: 2rem;
+    }
+}
+
+/* Mobile Layout */
+@media (max-width: 767px) {
+    #experience {
+        padding: 2rem 0;
+    }
+    
+    .timeline::before {
+        right: 30px;
+        transform: none;
+    }
+    
+    .timeline-item {
+        padding-right: 60px;
+    }
+    
+    .timeline-item::before {
+        right: 21px;
+        transform: none;
+        width: 18px;
+        height: 18px;
+    }
+    
+    .timeline-content {
+        margin: 0;
+        padding: 1.2rem;
+    }
+    
+    .timeline-date {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+    .timeline-item {
+        padding-right: 50px;
+    }
+    
+    .timeline-item::before {
+        right: 16px;
+        width: 16px;
+        height: 16px;
+    }
+    
+    .timeline-content {
+        padding: 1rem;
+    }
+    
+    .timeline-date {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.7rem;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .timeline-content p {
+        font-size: 0.85rem;
+        margin-bottom: 0.4rem;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 360px) {
+    .timeline-item {
+        padding-right: 40px;
+    }
+    
+    .timeline-item::before {
+        right: 12px;
+        width: 14px;
+        height: 14px;
+    }
+    
+    .timeline-content {
+        padding: 0.8rem;
+    }
+    
+    .container {
+        width: 95%;
+    }
+}
+
+/* Animation for timeline items */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-item {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+
+/* Improve touch experience on mobile */
+@media (max-width: 767px) {
+    .timeline-content {
+        border: 2px solid transparent;
+        transition: all 0.2s ease;
+    }
+    
+    .timeline-content:active {
+        border-color: var(--accent);
+        transform: scale(0.98);
+    }
+}
     </style>
 </head>
 <body>
@@ -824,9 +1680,16 @@
 <!-- Hero Section -->
 <section class="hero" id="hero">
     <div class="container hero-content">
-        <h2>أستاذ جراحة الأنف والأذن والحنجرة  <br>وجراحات الرأس والرقبة <br> بكلية طب قصر العيني - جامعة القاهرة  </h2>
-        <p> يتمتع بخبرة تزيد على 20 عامًا في جراحات الأنف والأذن والحنجرة للبالغين والأطفال، وعلاج اضطرابات السمع، وإجراء العمليات بالمنظار.</p>
+        <h2>أستاذ جراحة  الأنفة والأذن والحنجرة  <br>وجراحات الرأس والرقبة <br> بكلية طب قصر العيني - جامعة القاهرة  </h2>
+        <p> يتمتع بخبرة تزيد على 27 عامًا في جراحات الأنفة والأذن والحنجرة للبالغين والأطفال، وعلاج اضطرابات السمع، وإجراء العمليات بالمنظار.</p>
         <a href="Contact.html" target="_blank" class="btn">احجز موعد</a>
+    </div>
+    <div class="hero-social-links">
+        <a href="https://www.facebook.com/share/1ScdKGquB2/?mibextid=wwXIfr" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.researchgate.net/profile/Hatem-Badran" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+        <a href="https://youtube.com/user/tomybedro" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@badran.ent?_t=ZS-8wjKV9OJjaU&_r=1" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/badranentclinic?igshid=9p51dfbs2o5b" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
     </div>
 </section>
 
@@ -899,24 +1762,29 @@
             <h2>الخبرات العملية</h2>
         </div>
         <div class="timeline">
-            <div class="timeline-item left">
+            <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>الحالي</h3>
-                    <p>أستاذ أمراض الأنف والأذن والحنجرة – كلية الطب، جامعة القاهرة (قصر العيني)</p>
+                    <div class="timeline-date">الحالي</div>
+                    <h3>أستاذ جراحة الأنف والأذن والحنجرة</h3>
+                    <p>كلية الطب، جامعة القاهرة (قصر العيني)</p>
                     <p>عيادة خاصة بمول بدر الدين، الشيخ زايد</p>
                 </div>
             </div>
-            <div class="timeline-item right">
+             <div class="Baka"></div>
+            <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>2015 - 2020</h3>
-                <p>مستشار في مستشفى جلوبال كير</p>
+                    <div class="timeline-date">2015 - 2024</div>
+                    <h3>استشاري في مستشفى جلوبال كير</h3>
                 </div>
             </div>
-            <div class="timeline-item left">
+        </div>
+        <div class="Nani">
+            <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>2010 - 2015</h3>
-                    <p>رئيس قسم الأنف والأذن والحنجرة واستشاري أول</p>
-                    <p>المستشفى الألماني – المملكة العربية السعودية</p>
+                    <div class="timeline-date">2015 - 2020</div>
+                    <h3>رئيس قسم الأنف والأذن والحنجرة واستشاري أول</h3>
+                    <p>المستشفى السعودي الألماني – المملكة العربية السعودية</p>
+                </div>
                 </div>
             </div>
         </div>
@@ -951,12 +1819,362 @@
     </div>
 </section>
 
+<!-- Social Media Videos Section -->
+<section id="social-videos" class="social-videos-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>فيديوهات الدكتور على وسائل التواصل</h2>
+            <p>تابع أحدث الفيديوهات الطبية والتوعوية على منصات التواصل الاجتماعي</p>
+        </div>
+        
+        <div class="videos-grid">
+            <!-- Facebook Videos -->
+            <div class="video-platform-card">
+                <div class="platform-header">
+                    <div class="platform-icon facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <h3>فيسبوك</h3>
+                </div>
+                <div class="video-links">
+                    <a href="https://www.facebook.com/BadranENTClinic/reels/" target="_blank" class="video-link">
+                        <i class="fas fa-film"></i>
+                        <span>الريلز الطبية</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <a href="https://www.facebook.com/share/1ScdKGquB2/videos" target="_blank" class="platform-btn">
+                    مشاهدة جميع الفيديوهات
+                </a>
+            </div>
 
+            <!-- YouTube Videos -->
+            <div class="video-platform-card">
+                <div class="platform-header">
+                    <div class="platform-icon youtube">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>يوتيوب</h3>
+                </div>
+                <div class="video-links">
+                    <a href="https://www.youtube.com/user/tomybedro" target="_blank" class="video-link">
+                        <i class="fas fa-play-circle"></i>
+                        <span>قناة اليوتيوب الرئيسية</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@tomybedro/shorts" target="_blank" class="video-link">
+                        <i class="fas fa-clock"></i>
+                        <span>مقاطع قصيرة (Shorts)</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <a href="https://youtube.com/user/tomybedro" target="_blank" class="platform-btn">
+                    الاشتراك في القناة
+                </a>
+            </div>
+
+            <!-- TikTok Videos -->
+            <div class="video-platform-card">
+                <div class="platform-header">
+                    <div class="platform-icon tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>تيك توك</h3>
+                </div>
+                <div class="video-links">
+                    <a href="https://www.tiktok.com/@badran.ent?_t=ZS-8wjKV9OJjaU&_r=1" target="_blank" class="video-link">
+                        <i class="fas fa-play-circle"></i>
+                        <span>مقاطع تيك توك تعليمية</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <a href="https://www.tiktok.com/@badran.ent" target="_blank" class="platform-btn">
+                    متابعة الحساب
+                </a>
+            </div>
+            <!-- Instagram Videos
+            <div class="video-platform-card">
+                <div class="platform-header">
+                    <div class="platform-icon instagram">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>انستجرام</h3>
+                    <span class="video-count">+40 فيديو</span>
+                </div>
+                <div class="video-links">
+                    <a href="https://www.instagram.com/badranentclinic/reels" target="_blank" class="video-link">
+                        <i class="fas fa-film"></i>
+                        <span>الريلز الطبية</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://www.instagram.com/badranentclinic/stories" target="_blank" class="video-link">
+                        <i class="fas fa-circle"></i>
+                        <span>الستوريات اليومية</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                <a href="https://www.instagram.com/badranentclinic" target="_blank" class="platform-btn">
+                    متابعة الانستجرام
+                </a>
+            </div>
+        </div>
+
+        <div class="videos-cta">
+            <div class="cta-content">
+                <h3>لا تفوت أحدث الفيديوهات الطبية</h3>
+                <p>اشترك في قنواتنا لتصلك أحدث الفيديوهات التعليمية والتوعوية في مجال الأنف والأذن والحنجرة</p>
+                <div class="social-links-mini">
+                    <a href="https://www.facebook.com/share/1ScdKGquB2" target="_blank" class="social-mini-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        فيسبوك
+                    </a>
+                    <a href="https://youtube.com/user/tomybedro" target="_blank" class="social-mini-btn youtube">
+                        <i class="fab fa-youtube"></i>
+                        يوتيوب
+                    </a>
+                    <a href="https://www.tiktok.com/@badran.ent" target="_blank" class="social-mini-btn tiktok">
+                        <i class="fab fa-tiktok"></i>
+                        تيك توك
+                    </a>
+                    <a href="https://www.instagram.com/badranentclinic" target="_blank" class="social-mini-btn instagram">
+                        <i class="fab fa-instagram"></i>
+                        انستجرام
+                    </a>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Social Videos Section Styles */
+.fas.fa-clock{
+    margin-bottom: 2px;
+}
+.social-videos-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.video-platform-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e9ecef;
+}
+
+.video-platform-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.platform-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.platform-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.platform-icon.facebook { background: #1877f2; }
+.platform-icon.youtube { background: #ff0000; }
+.platform-icon.tiktok { background: #000000; }
+.platform-icon.instagram { 
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.platform-header h3 {
+    color: var(--dark);
+    margin: 0;
+    flex: 1;
+}
+
+.video-count {
+    background: var(--accent);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.video-links {
+    margin-bottom: 1.5rem;
+}
+
+.video-link {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.video-link:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateX(5px);
+}
+
+.video-link i:first-child {
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.video-link span {
+    flex: 1;
+    font-weight: 500;
+}
+
+.video-link i:last-child {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+.platform-btn {
+    display: block;
+    text-align: center;
+    background: var(--primary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.platform-btn:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+/* CTA Section */
+.videos-cta {
+    background: white;
+    border-radius: 15px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.cta-content h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.cta-content p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.social-links-mini {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.social-mini-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.social-mini-btn.facebook {
+    background: #1877f2;
+    color: white;
+}
+
+.social-mini-btn.youtube {
+    background: #ff0000;
+    color: white;
+}
+
+.social-mini-btn.tiktok {
+    background: #000000;
+    color: white;
+}
+
+.social-mini-btn.instagram {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: white;
+}
+
+.social-mini-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .videos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .platform-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .platform-icon {
+        margin: 0 0 1rem 0;
+    }
+    
+    .social-links-mini {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-mini-btn {
+        width: 200px;
+        justify-content: center;
+    }
+    
+    .videos-cta {
+        padding: 2rem;
+    }
+}
+</style>
 <!-- Locations Section -->
 <section id="locations" class="locations">
     <div class="container">
         <div class="section-title">
-            <h2>فروع العيادة</h2>
+            <h2>العيادة</h2>
         </div>
         <div class="location-cards">
             <div class="location-card">
@@ -965,8 +2183,7 @@
                 </div>
                 <div class="location-info">
                     <h3>عيادة الشيخ زايد</h3>
-                    <p>مول بدر الدين – الدور الأول</p>
-                    <p>الشيخ زايد، الجيزة – مصر</p>
+                    <p>مول زايد ( بدر الدين ) – الحى 16 – الشيخ زايد</p>
                     <p class="location-fee">قيمة الكشف: 600 جنيه</p>
                     
                     <div class="clinic-features">
@@ -1000,9 +2217,9 @@
             <div class="contact-info">
                 <h3>بيانات التواصل</h3>
                 <div class="contact-details">
-                   <a href="https://www.google.com/maps/place/%D8%A3.%D8%AF.+%D8%AD%D8%A7%D8%AA%D9%85+%D8%A8%D8%AF%D8%B1%D8%A7%D9%86+%D8%A3%D8%B3%D8%AA%D8%A7%D8%B0+%D8%A7%D9%84%D8%A3%D9%86%D9%81+%D9%88%D8%A7%D9%84%D8%A3%D8%B0%D9%86+%D9%88%D8%A7%D9%84%D8%AD%D9%86%D8%AC%D8%B1%D8%A9+%D8%A8%D9%83%D9%84%D9%8A%D8%A9+%D8%B7%D8%A8+%D9%82%D8%B5%D8%B1+%D8%A7%D9%84%D8%B9%D9%8A%D9%86%D9%8A+%D8%AC%D8%A7%D9%85%D8%B9%D8%A9+%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9%E2%80%AD/@30.0555855,30.9570921,17z/data=!4m16!1m9!3m8!1s0x1458598152d50763:0xaa53eb2aea65f627!2z2KMu2K8uINit2KfYqtmFINio2K_Ysdin2YYg2KPYs9iq2KfYsCDYp9mE2KPZhtmBINmI2KfZhNij2LDZhiDZiNin2YTYrdmG2KzYsdipINio2YPZhNmK2Kkg2LfYqCDZgti12LEg2KfZhNi52YrZhtmKINis2KfZhdi52Kkg2KfZhNmC2KfZh9ix2Kk!8m2!3d30.0555855!4d30.9570921!9m1!1b1!16s%2Fg%2F11vyhcdjwb!3m5!1s0x1458598152d50763:0xaa53eb2aea65f627!8m2!3d30.0555855!4d30.9570921!16s%2Fg%2F11vyhcdjwb?entry=ttu&g_ep=EgoyMDI1MDkxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank"><p><i class="fas fa-map-marker-alt"></i> مول بدر الدين – الشيخ زايد، الجيزة، مصر</p></a> 
-                   <a href="tel:+201092667448"><p><i class="fas fa-phone"></i>7448 266 109 20+</p></a>
-                   <a href="mailto:Hatembadran@hotmail.com"> <p><i class="fas fa-envelope"></i> Hatembadran@hotmail.com</p></a>
+                   <a href="https://www.google.com/maps/place/%D8%A3.%D8%AF.+%D8%AD%D8%A7%D8%AA%D9%85+%D8%A8%D8%AF%D8%B1%D8%A7%D9%86+%D8%A3%D8%B3%D8%AA%D8%A7%D8%B0+%D8%A7%D9%84%D8%A3%D9%86%D9%81+%D9%88%D8%A7%D9%84%D8%A3%D8%B0%D9%86+%D9%88%D8%A7%D9%84%D8%AD%D9%86%D8%AC%D8%B1%D8%A9+%D8%A8%D9%83%D9%84%D9%8A%D8%A9+%D8%B7%D8%A8+%D9%82%D8%B5%D8%B1+%D8%A7%D9%84%D8%B9%D9%8A%D9%86%D9%8A+%D8%AC%D8%A7%D9%85%D8%B9%D8%A9+%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9%E2%80%AD/@30.0555855,30.9570921,17z/data=!4m16!1m9!3m8!1s0x1458598152d50763:0xaa53eb2aea65f627!2z2KMu2K8uINit2KfYqtmFINio2K_Ysdin2YYg2KPYs9iq2KfYsCDYp9mE2KPZhtmBINmI2KfZhNij2LDZhiDZiNin2YTYrdmG2KzYsdipINio2YPZhNmK2Kkg2LfYqCDZgti12LEg2KfZhNi52YrZhtmKINis2KfZhdi52Kkg2KfZhNmC2KfZh9ix2Kk!8m2!3d30.0555855!4d30.9570921!9m1!1b1!16s%2Fg%2F11vyhcdjwb!3m5!1s0x1458598152d50763:0xaa53eb2aea65f627!8m2!3d30.0555855!4d30.9570921!16s%2Fg%2F11vyhcdjwb?entry=ttu&g_ep=EgoyMDI1MDkxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank"><p><i class="fas fa-map-marker-alt"></i>مول زايد ( بدر الدين ) – الحى 16 – الشيخ زايد</p></a> 
+                   <a href="tel:010 92 667 448"><p><i class="fas fa-phone"></i> 448 667 92 010 </p></a>
+                   <a href="mailto:Hatembadran@hotmail.com"> <p><i class="fas fa-envelope"></i>Dr.H.Badran@hotmail.com</p></a>
                     <p><i class="fas fa-money-bill-wave"></i> قيمة الكشف: ٦۰۰ جنيه</p>
                 </div>
                 
@@ -1101,4 +2318,3 @@
     </script>
 </body>
 </html>
-
