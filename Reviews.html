@@ -649,13 +649,14 @@
             }
         }
         /* --- Image Lightbox --- */
+/* --- Image Lightbox --- */
 .lightbox {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.9);
+    background: rgba(0,0,0,0.95);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -672,14 +673,15 @@
 
 .lightbox img {
     max-width: 90%;
-    max-height: 85%;
+    max-height: 80%;
     object-fit: contain;
     cursor: zoom-in;
     transition: transform 0.3s ease;
+    border-radius: 8px;
 }
 
 .lightbox img.zoomed {
-    transform: scale(2); /* simple zoom effect */
+    transform: scale(1.5);
     cursor: zoom-out;
 }
 
@@ -688,10 +690,22 @@
     top: 20px;
     right: 25px;
     color: white;
-    font-size: 2rem;
+    font-size: 3rem;
     cursor: pointer;
+    z-index: 10000;
+    background: rgba(0,0,0,0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
+.lightbox-close:hover {
+    background: rgba(0,0,0,0.8);
+}
     </style>
 </head>
 <body>
@@ -883,41 +897,54 @@
 
     <script>
         // Mobile menu toggle
-        function toggleMenu() {
-            const nav = document.getElementById('main-nav');
-            nav.classList.toggle('active');
-        }
-        
-        // Scroll to hero when logo is clicked
-        function scrollToHero() {
-            document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        // Back to top button
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-        
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('main-nav').classList.remove('active');
-            });
-        });
-        
+// Mobile menu toggle
+function toggleMenu() {
+    const nav = document.getElementById('main-nav');
+    nav.classList.toggle('active');
+}
 
-        // Pagination Gallery Functionality
+// Scroll to hero when logo is clicked
+function scrollToHero() {
+    document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Back to top button
+const backToTopButton = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('visible');
+    } else {
+        backToTopButton.classList.remove('visible');
+    }
+});
+
+backToTopButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('main-nav').classList.remove('active');
+    });
+});
+
+// Create lightbox element if it doesn't exist
+function createLightbox() {
+    if (!document.getElementById('lightbox')) {
+        const lightboxHTML = `
+            <div class="lightbox" id="lightbox">
+                <span class="lightbox-close" id="lightboxClose">&times;</span>
+                <img id="lightboxImg" src="" alt="Enlarged photo">
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+    }
+}
+
+// Pagination Gallery Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const galleryImages = [
         'Images-Demo1/2024-08-07.jpg',
@@ -941,7 +968,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Images-Demo1/2024-02-08 (1).jpg'
     ];
 
-    const itemsPerPage = 4; // Number of images per page
+    const itemsPerPage = 4;
     let currentPage = 1;
     
     const galleryElement = document.getElementById('paginationGallery');
@@ -951,28 +978,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     
-    // Calculate total pages
     const totalPages = Math.ceil(galleryImages.length / itemsPerPage);
+    
+    // Create lightbox
+    createLightbox();
     
     function initializeGallery() {
         totalPagesElement.textContent = totalPages;
         updatePagination();
         renderPageNumbers();
         showPage(currentPage);
+        setupLightbox();
     }
     
     function showPage(page) {
         currentPage = page;
         currentPageElement.textContent = page;
         
-        // Clear gallery
         galleryElement.innerHTML = '';
         
-        // Calculate start and end indices
         const startIndex = (page - 1) * itemsPerPage;
         const endIndex = Math.min(startIndex + itemsPerPage, galleryImages.length);
         
-        // Add images for current page
         for (let i = startIndex; i < endIndex; i++) {
             const imgElement = document.createElement('div');
             imgElement.className = 'gallery-item';
@@ -987,7 +1014,6 @@ document.addEventListener('DOMContentLoaded', function() {
         prevBtn.disabled = currentPage === 1;
         nextBtn.disabled = currentPage === totalPages;
         
-        // Update active page number
         document.querySelectorAll('.page-number').forEach((pageNum, index) => {
             if (index + 1 === currentPage) {
                 pageNum.classList.add('active');
@@ -1013,6 +1039,52 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    // Lightbox functionality
+    function setupLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+        
+        // Click on gallery images
+        galleryElement.addEventListener('click', function(e) {
+            if (e.target.tagName === 'IMG') {
+                lightboxImg.src = e.target.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+        
+        // Close lightbox
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        
+        // Zoom toggle on image click
+        lightboxImg.addEventListener('click', function(e) {
+            e.stopPropagation();
+            this.classList.toggle('zoomed');
+        });
+        
+        // Escape key to close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    }
+    
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        
+        lightbox.classList.remove('active');
+        lightboxImg.classList.remove('zoomed');
+        document.body.style.overflow = '';
+    }
+    
     // Event listeners for pagination buttons
     prevBtn.addEventListener('click', () => {
         if (currentPage > 1) {
@@ -1029,34 +1101,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize the gallery
     initializeGallery();
 });
-
-        // === Image Lightbox & Zoom ===
-document.addEventListener('click', function(e) {
-    const target = e.target.closest('.gallery-item img');
-    if (target) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        lightboxImg.src = target.src;
-        lightbox.classList.add('active');
-    }
-});
-
-document.getElementById('lightboxClose').addEventListener('click', () => {
-    document.getElementById('lightbox').classList.remove('active');
-    document.getElementById('lightboxImg').classList.remove('zoomed');
-});
-
-document.getElementById('lightbox').addEventListener('click', (e) => {
-    if (e.target.id === 'lightbox' || e.target.id === 'lightboxImg') {
-        const img = document.getElementById('lightboxImg');
-        if (img.classList.contains('zoomed')) {
-            img.classList.remove('zoomed');
-        } else {
-            img.classList.add('zoomed');
-        }
-    }
-});
-
 
 // Keep all your existing JavaScript functions (toggleMenu, scrollToHero, etc.)
 // ... your existing JavaScript code for other functionality ...
