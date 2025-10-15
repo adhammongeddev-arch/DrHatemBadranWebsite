@@ -304,157 +304,150 @@
             font-size: 1.1rem;
         }
         
-        /* Patient Photos Section 
-        .gallery-container {
-            width: 100%;
-            overflow: hidden;
-            position: relative;
-            margin: 2rem 0;
-        }
-        
-        .scrolling-gallery {
-            display: flex;
-            animation: scroll 200s linear infinite;
-            gap: 15px;
-            padding: 10px 0;
-        }
-        
-        .scrolling-gallery:hover {
-            animation-play-state: paused;
-        }
-        
-        .gallery-item {
-            flex: 0 0 auto;
-            width: 250px;
-            height: 250px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-        
-        
-        html[dir="rtl"] .scrolling-gallery {
-            animation: scroll-rtl 200s linear infinite;
-        }
-        
-        html[dir="rtl"] .scrolling-gallery:hover {
-            animation-play-state: paused;
-        }
-        
-        @keyframes scroll-rtl {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(50%);
-            }
-        }
-        .sec1-sec2-sec3-sec4 {
-            background: white;
-            padding: 3rem 0;
-        }
-        
-        .sec1-sec2-sec3-sec4{
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-       .sec1-sec2-sec3-sec4{
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            height: 250px;
-        }
-        
-        .sec1-sec2-sec3-sec4:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .sec1-sec2-sec3-sec4 img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        */
-  .gallery-container {
+    /* Patient Photos Section - Pagination Gallery */
+.patient-photos {
+    background: white;
+    padding: 3rem 0;
+}
+
+.gallery-container {
     width: 100%;
-    overflow: hidden;
-    position: relative;
     margin: 2rem 0;
     padding: 15px 0;
-    background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-  }
+}
 
-  .scrolling-gallery {
-    display: flex;
+.pagination-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-    padding: 10px;
-    /* duration is set by JS (defaults to 60s) */
-    animation: scroll 60s linear infinite;
-    align-items: stretch;
-  }
+    margin-bottom: 2rem;
+    min-height: 300px;
+}
 
-  .gallery-item {
-    flex: 0 0 auto;
-    width: 300px;
-    height: 250px;
+.gallery-item {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     transition: transform .35s ease, box-shadow .35s ease;
-  }
+    height: 250px;
+    position: relative;
+}
 
-  .gallery-item img {
+.gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform .5s ease;
-  }
+}
 
-  .gallery-item:hover {
-    transform: scale(1.06);
-    z-index: 10;
+.gallery-item:hover {
+    transform: scale(1.03);
     box-shadow: 0 15px 30px rgba(0,0,0,0.12);
-  }
+}
 
-  .gallery-item:hover img {
-    transform: scale(1.08);
-  }
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
 
-  /* keyframes slide by 50% because we will duplicate content in JS */
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
+/* Pagination Controls */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
 
+.pagination-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.page-number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background: #f8f9fa;
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.page-number:hover {
+    background: var(--secondary);
+    color: white;
+}
+
+.page-number.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--accent);
+}
+
+.page-info {
+    color: var(--dark);
+    font-weight: 600;
+    margin: 0 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pagination-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .gallery-item {
+        height: 200px;
+    }
+    
+    .pagination-controls {
+        gap: 10px;
+    }
+    
+    .pagination-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .page-number {
+        width: 35px;
+        height: 35px;
+    }
+}
         
         /* Google Reviews Section */
         .google-reviews {
@@ -774,39 +767,41 @@
         </div>
     </section>
 
-    <section class="patient-photos">
-        <div class="container">
-            <div class="section-title">
-                <h2>معرض صور المرضى</h2>
-                <p>لحظات من الرضا والشفاء بعد تلقي العلاج</p>
-            </div>
-
-    <div class="gallery-container">
-      <div class="scrolling-gallery">
-
-    <div class="gallery-item"><img src="Images-Demo1/2024-08-07.jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-05-16.jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-05-16 (1).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-04-19.jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-04-11.jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-04-11 (1).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-04-11 (2).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-03-30.jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-03-30 (3).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-03-30 (2).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-03-30 (1).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-02-08.jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-02-08 (7).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-02-08 (6).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-02-08 (5).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-02-08 (4).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-02-08 (3).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-02-08 (2).jpg" alt="Patient Photo"></div>
-    <div class="gallery-item"><img src="Images-Demo1/2024-02-08 (1).jpg" alt="Patient Photo"></div>
-  </div>
-</div>
-</div>
+   <!-- Replace the entire patient-photos section with this: -->
+<section class="patient-photos">
+    <div class="container">
+        <div class="section-title">
+            <h2>معرض صور المرضى</h2>
+            <p>لحظات من الرضا والشفاء بعد تلقي العلاج</p>
         </div>
+
+        <div class="gallery-container">
+            <!-- Pagination Gallery -->
+            <div class="pagination-gallery" id="paginationGallery">
+                <!-- Images will be inserted here by JavaScript -->
+            </div>
+            
+            <!-- Pagination Controls -->
+            <div class="pagination-controls">
+                <button class="pagination-btn" id="prevBtn" disabled>
+                    <i class="fas fa-chevron-right"></i> السابق
+                </button>
+                
+                <div class="page-numbers" id="pageNumbers">
+                    <!-- Page numbers will be inserted here by JavaScript -->
+                </div>
+                
+                <div class="page-info">
+                    الصفحة <span id="currentPage">1</span> من <span id="totalPages">1</span>
+                </div>
+                
+                <button class="pagination-btn" id="nextBtn">
+                    التالي <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
     <!-- Google Reviews Section -->
     <section class="google-reviews">
         <div class="container">
@@ -877,76 +872,123 @@
             });
         });
         
-        // Rating stars functionality
-        const ratingStars = document.querySelectorAll('.rating-star');
-        const ratingInput = document.getElementById('rating');
-        
-        ratingStars.forEach(star => {
-            star.addEventListener('click', () => {
-                const value = star.getAttribute('data-value');
-                ratingInput.value = value;
-                
-                ratingStars.forEach(s => {
-                    if (s.getAttribute('data-value') <= value) {
-                        s.classList.add('active');
-                    } else {
-                        s.classList.remove('active');
-                    }
-                });
-            });
-            
-            star.addEventListener('mouseover', () => {
-                const value = star.getAttribute('data-value');
-                
-                ratingStars.forEach(s => {
-                    if (s.getAttribute('data-value') <= value) {
-                        s.classList.add('active');
-                    } else {
-                        s.classList.remove('active');
-                    }
-                });
-            });
-            
-            star.addEventListener('mouseout', () => {
-                const currentValue = ratingInput.value || 0;
-                
-                ratingStars.forEach(s => {
-                    if (s.getAttribute('data-value') <= currentValue) {
-                        s.classList.add('active');
-                    } else {
-                        s.classList.remove('active');
-                    }
-                });
-            });
-        });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const gallery = document.getElementById('scrollingGallery');
-    if (!gallery) return;
+        // Pagination Gallery Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryImages = [
+        'Images-Demo1/2024-08-07.jpg',
+        'Images-Demo1/2024-05-16.jpg',
+        'Images-Demo1/2024-05-16 (1).jpg',
+        'Images-Demo1/2024-04-19.jpg',
+        'Images-Demo1/2024-04-11.jpg',
+        'Images-Demo1/2024-04-11 (1).jpg',
+        'Images-Demo1/2024-04-11 (2).jpg',
+        'Images-Demo1/2024-03-30.jpg',
+        'Images-Demo1/2024-03-30 (3).jpg',
+        'Images-Demo1/2024-03-30 (2).jpg',
+        'Images-Demo1/2024-03-30 (1).jpg',
+        'Images-Demo1/2024-02-08.jpg',
+        'Images-Demo1/2024-02-08 (7).jpg',
+        'Images-Demo1/2024-02-08 (6).jpg',
+        'Images-Demo1/2024-02-08 (5).jpg',
+        'Images-Demo1/2024-02-08 (4).jpg',
+        'Images-Demo1/2024-02-08 (3).jpg',
+        'Images-Demo1/2024-02-08 (2).jpg',
+        'Images-Demo1/2024-02-08 (1).jpg'
+    ];
 
-    // 1) Clone content for seamless loop:
-    gallery.innerHTML += gallery.innerHTML;
-
-    // 2) Pause-on-hover (works even if JS errors elsewhere)
-    gallery.addEventListener('mouseenter', () => {
-      gallery.style.animationPlayState = 'paused';
-    });
-    gallery.addEventListener('mouseleave', () => {
-      gallery.style.animationPlayState = 'running';
-    });
-
-    // 3) Safely set animation duration based on the number of original items (optional)
-    //    This gives a roughly constant visible speed as you add/remove images.
-    try {
-      const items = gallery.querySelectorAll('.gallery-item').length / 2; // original count
-      const baseDurationPerItem = 3.5; // seconds each image takes to pass (tweakable)
-      const duration = Math.max(20, Math.round(items * baseDurationPerItem)); // min 20s
-      gallery.style.animationDuration = duration + 's';
-    } catch (e) {
-      // if anything fails, keep default CSS duration
-      console.warn('gallery duration calc failed', e);
+    const itemsPerPage = 6; // Number of images per page
+    let currentPage = 1;
+    
+    const galleryElement = document.getElementById('paginationGallery');
+    const pageNumbersElement = document.getElementById('pageNumbers');
+    const currentPageElement = document.getElementById('currentPage');
+    const totalPagesElement = document.getElementById('totalPages');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    // Calculate total pages
+    const totalPages = Math.ceil(galleryImages.length / itemsPerPage);
+    
+    function initializeGallery() {
+        totalPagesElement.textContent = totalPages;
+        updatePagination();
+        renderPageNumbers();
+        showPage(currentPage);
     }
-  });
+    
+    function showPage(page) {
+        currentPage = page;
+        currentPageElement.textContent = page;
+        
+        // Clear gallery
+        galleryElement.innerHTML = '';
+        
+        // Calculate start and end indices
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = Math.min(startIndex + itemsPerPage, galleryImages.length);
+        
+        // Add images for current page
+        for (let i = startIndex; i < endIndex; i++) {
+            const imgElement = document.createElement('div');
+            imgElement.className = 'gallery-item';
+            imgElement.innerHTML = `<img src="${galleryImages[i]}" alt="Patient Photo ${i + 1}" loading="lazy">`;
+            galleryElement.appendChild(imgElement);
+        }
+        
+        updatePagination();
+    }
+    
+    function updatePagination() {
+        prevBtn.disabled = currentPage === 1;
+        nextBtn.disabled = currentPage === totalPages;
+        
+        // Update active page number
+        document.querySelectorAll('.page-number').forEach((pageNum, index) => {
+            if (index + 1 === currentPage) {
+                pageNum.classList.add('active');
+            } else {
+                pageNum.classList.remove('active');
+            }
+        });
+    }
+    
+    function renderPageNumbers() {
+        pageNumbersElement.innerHTML = '';
+        
+        for (let i = 1; i <= totalPages; i++) {
+            const pageNum = document.createElement('a');
+            pageNum.className = `page-number ${i === 1 ? 'active' : ''}`;
+            pageNum.textContent = i;
+            pageNum.href = '#';
+            pageNum.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage(i);
+            });
+            pageNumbersElement.appendChild(pageNum);
+        }
+    }
+    
+    // Event listeners for pagination buttons
+    prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+            showPage(currentPage - 1);
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            showPage(currentPage + 1);
+        }
+    });
+    
+    // Initialize the gallery
+    initializeGallery();
+});
+
+// Keep all your existing JavaScript functions (toggleMenu, scrollToHero, etc.)
+// ... your existing JavaScript code for other functionality ...
+        
     </script>
 </body>
 </html>
