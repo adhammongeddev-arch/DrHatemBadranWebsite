@@ -917,7 +917,8 @@
         });
         
 
-    document.addEventListener('DOMContentLoaded', function() {
+        // Pagination Gallery Functionality
+document.addEventListener('DOMContentLoaded', function() {
     const galleryImages = [
         'Images-Demo1/2024-08-07.jpg',
         'Images-Demo1/2024-05-16.jpg',
@@ -940,7 +941,7 @@
         'Images-Demo1/2024-02-08 (1).jpg'
     ];
 
-    const itemsPerPage = 4;
+    const itemsPerPage = 4; // Number of images per page
     let currentPage = 1;
     
     const galleryElement = document.getElementById('paginationGallery');
@@ -950,6 +951,7 @@
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     
+    // Calculate total pages
     const totalPages = Math.ceil(galleryImages.length / itemsPerPage);
     
     function initializeGallery() {
@@ -963,22 +965,18 @@
         currentPage = page;
         currentPageElement.textContent = page;
         
+        // Clear gallery
         galleryElement.innerHTML = '';
         
+        // Calculate start and end indices
         const startIndex = (page - 1) * itemsPerPage;
         const endIndex = Math.min(startIndex + itemsPerPage, galleryImages.length);
         
+        // Add images for current page
         for (let i = startIndex; i < endIndex; i++) {
             const imgElement = document.createElement('div');
             imgElement.className = 'gallery-item';
             imgElement.innerHTML = `<img src="${galleryImages[i]}" alt="Patient Photo ${i + 1}" loading="lazy">`;
-            
-            // Add click event to each image
-            const img = imgElement.querySelector('img');
-            img.addEventListener('click', function() {
-                openLightbox(this.src);
-            });
-            
             galleryElement.appendChild(imgElement);
         }
         
@@ -989,6 +987,7 @@
         prevBtn.disabled = currentPage === 1;
         nextBtn.disabled = currentPage === totalPages;
         
+        // Update active page number
         document.querySelectorAll('.page-number').forEach((pageNum, index) => {
             if (index + 1 === currentPage) {
                 pageNum.classList.add('active');
@@ -1014,27 +1013,6 @@
         }
     }
     
-    // Lightbox functionality
-    function openLightbox(src) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        
-        lightboxImg.src = src;
-        lightboxImg.classList.remove('zoomed'); // Reset zoom state
-        lightbox.classList.add('active');
-        
-        // Prevent body scroll when lightbox is open
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.classList.remove('active');
-        
-        // Restore body scroll
-        document.body.style.overflow = '';
-    }
-    
     // Event listeners for pagination buttons
     prevBtn.addEventListener('click', () => {
         if (currentPage > 1) {
@@ -1048,64 +1026,37 @@
         }
     });
     
-    // Lightbox event listeners
-    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-    
-    document.getElementById('lightbox').addEventListener('click', (e) => {
-        if (e.target.id === 'lightbox') {
-            closeLightbox();
-        }
-    });
-    
-    document.getElementById('lightboxImg').addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent closing when clicking the image
-        const img = document.getElementById('lightboxImg');
-        img.classList.toggle('zoomed');
-    });
-    
-    // Close lightbox with Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeLightbox();
-        }
-    });
-    
     // Initialize the gallery
     initializeGallery();
 });
 
-// Keep all your existing JavaScript functions (toggleMenu, scrollToHero, etc.)
-function toggleMenu() {
-    const nav = document.getElementById('main-nav');
-    nav.classList.toggle('active');
-}
-
-function scrollToHero() {
-    document.getElementById('hero').scrollIntoView({ behavior: 'smooth' });
-}
-
-// Back to top button
-const backToTopButton = document.getElementById('backToTop');
-
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        backToTopButton.classList.add('visible');
-    } else {
-        backToTopButton.classList.remove('visible');
+        // === Image Lightbox & Zoom ===
+document.addEventListener('click', function(e) {
+    const target = e.target.closest('.gallery-item img');
+    if (target) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        lightboxImg.src = target.src;
+        lightbox.classList.add('active');
     }
 });
 
-backToTopButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+document.getElementById('lightboxClose').addEventListener('click', () => {
+    document.getElementById('lightbox').classList.remove('active');
+    document.getElementById('lightboxImg').classList.remove('zoomed');
 });
 
-// Close mobile menu when clicking on a link
-document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.getElementById('main-nav').classList.remove('active');
-    });
+document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox' || e.target.id === 'lightboxImg') {
+        const img = document.getElementById('lightboxImg');
+        if (img.classList.contains('zoomed')) {
+            img.classList.remove('zoomed');
+        } else {
+            img.classList.add('zoomed');
+        }
+    }
 });
+
 
 // Keep all your existing JavaScript functions (toggleMenu, scrollToHero, etc.)
 // ... your existing JavaScript code for other functionality ...
