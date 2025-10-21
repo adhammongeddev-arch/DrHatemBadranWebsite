@@ -648,8 +648,7 @@
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
         }
-        /* --- Image Lightbox --- */
-/* --- Advanced Zoomable Lightbox --- */
+/* --- Simple Zoom Lightbox --- */
 .lightbox {
     position: fixed;
     top: 0;
@@ -664,7 +663,6 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease;
-    cursor: grab;
 }
 
 .lightbox.active {
@@ -672,59 +670,17 @@
     visibility: visible;
 }
 
-.lightbox-content {
-    position: relative;
-    max-width: 90%;
-    max-height: 90%;
-    overflow: hidden;
-    cursor: grab;
-}
-
-.lightbox-content.grabbing {
-    cursor: grabbing;
-}
-
 .lightbox-img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90%;
+    max-height: 80%;
     object-fit: contain;
     transition: transform 0.3s ease;
-    transform-origin: 0 0;
-    cursor: grab;
-}
-
-.lightbox-controls {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-    z-index: 10000;
-}
-
-.lightbox-btn {
-    background: rgba(0,0,0,0.7);
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease;
-}
-
-.lightbox-btn:hover {
-    background: rgba(0,0,0,0.9);
 }
 
 .lightbox-close {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 25px;
     color: white;
     font-size: 3rem;
     cursor: pointer;
@@ -744,17 +700,42 @@
     background: rgba(0,0,0,0.9);
 }
 
-.zoom-info {
+/* Desktop Zoom Buttons */
+.desktop-zoom-controls {
     position: absolute;
-    bottom: 20px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10000;
+}
+
+.zoom-btn {
     background: rgba(0,0,0,0.7);
     color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    pointer-events: none;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+    font-weight: bold;
+}
+
+.zoom-btn:hover {
+    background: rgba(0,0,0,0.9);
+}
+
+/* Hide zoom buttons on mobile */
+@media (max-width: 768px) {
+    .desktop-zoom-controls {
+        display: none;
+    }
 }
     </style>
 </head>
@@ -947,6 +928,7 @@
 
     <script>
 // Mobile menu toggle
+// Mobile menu toggle
 function toggleMenu() {
     const nav = document.getElementById('main-nav');
     nav.classList.toggle('active');
@@ -978,19 +960,15 @@ document.querySelectorAll('nav a').forEach(link => {
     });
 });
 
-// Create advanced lightbox if it doesn't exist
+// Create simple lightbox if it doesn't exist
 function createLightbox() {
     if (!document.getElementById('lightbox')) {
         const lightboxHTML = `
             <div class="lightbox" id="lightbox">
-                <div class="lightbox-content" id="lightboxContent">
-                    <img class="lightbox-img" id="lightboxImg" src="" alt="Enlarged photo">
-                    <div class="zoom-info" id="zoomInfo">100%</div>
-                </div>
-                <div class="lightbox-controls">
-                    <button class="lightbox-btn" id="zoomInBtn" title="Zoom In">+</button>
-                    <button class="lightbox-btn" id="zoomOutBtn" title="Zoom Out">−</button>
-                    <button class="lightbox-btn" id="resetZoomBtn" title="Reset Zoom">↺</button>
+                <img class="lightbox-img" id="lightboxImg" src="" alt="Enlarged photo">
+                <div class="desktop-zoom-controls">
+                    <button class="zoom-btn" id="zoomInBtn" title="Zoom In">+</button>
+                    <button class="zoom-btn" id="zoomOutBtn" title="Zoom Out">−</button>
                 </div>
                 <button class="lightbox-close" id="lightboxClose">&times;</button>
             </div>
@@ -999,7 +977,7 @@ function createLightbox() {
     }
 }
 
-// Pagination Gallery with Advanced Lightbox
+// Pagination Gallery with Simple Lightbox
 document.addEventListener('DOMContentLoaded', function() {
     const galleryImages = [
         'Images-Demo1/2024-08-07.jpg',
@@ -1037,10 +1015,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Lightbox variables
     let scale = 1;
-    let posX = 0;
-    let posY = 0;
-    let isDragging = false;
-    let startX, startY;
     
     // Create lightbox
     createLightbox();
@@ -1050,7 +1024,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updatePagination();
         renderPageNumbers();
         showPage(currentPage);
-        setupAdvancedLightbox();
+        setupSimpleLightbox();
     }
     
     function showPage(page) {
@@ -1101,76 +1075,64 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Advanced Lightbox functionality
-    function setupAdvancedLightbox() {
+    // Simple Lightbox functionality
+    function setupSimpleLightbox() {
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxContent = document.getElementById('lightboxContent');
         const lightboxClose = document.getElementById('lightboxClose');
         const zoomInBtn = document.getElementById('zoomInBtn');
         const zoomOutBtn = document.getElementById('zoomOutBtn');
-        const resetZoomBtn = document.getElementById('resetZoomBtn');
-        const zoomInfo = document.getElementById('zoomInfo');
         
         // Click on gallery images
         galleryElement.addEventListener('click', function(e) {
             if (e.target.tagName === 'IMG') {
-                resetZoomState();
+                scale = 1; // Reset zoom
+                lightboxImg.style.transform = `scale(${scale})`;
                 lightboxImg.src = e.target.src;
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
-                updateZoomInfo();
             }
         });
         
         // Zoom controls
         zoomInBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            scale *= 1.2;
-            applyTransform();
-            updateZoomInfo();
+            scale += 0.3;
+            lightboxImg.style.transform = `scale(${scale})`;
         });
         
         zoomOutBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            scale /= 1.2;
-            if (scale < 1) scale = 1;
-            applyTransform();
-            updateZoomInfo();
+            scale = Math.max(1, scale - 0.3); // Don't go below 1x
+            lightboxImg.style.transform = `scale(${scale})`;
         });
         
-        resetZoomBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            resetZoomState();
-            updateZoomInfo();
-        });
+        // Mobile pinch zoom
+        let initialDistance = 0;
+        let currentScale = 1;
         
-        // Mouse wheel zoom
-        lightboxContent.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            const delta = e.deltaY > 0 ? 0.9 : 1.1;
-            
-            // Calculate zoom point relative to image
-            const rect = lightboxContent.getBoundingClientRect();
-            const mouseX = e.clientX - rect.left;
-            const mouseY = e.clientY - rect.top;
-            
-            const newScale = scale * delta;
-            if (newScale >= 0.5 && newScale <= 5) {
-                scale = newScale;
-                
-                // Adjust position to zoom toward mouse
-                posX = mouseX - (mouseX - posX) * delta;
-                posY = mouseY - (mouseY - posY) * delta;
-                
-                applyTransform();
-                updateZoomInfo();
+        lightboxImg.addEventListener('touchstart', function(e) {
+            if (e.touches.length === 2) {
+                initialDistance = getDistance(e.touches[0], e.touches[1]);
+                currentScale = scale;
             }
         });
         
-        // Dragging/Panning
-        lightboxContent.addEventListener('mousedown', startDragging);
-        lightboxContent.addEventListener('touchstart', startDraggingTouch);
+        lightboxImg.addEventListener('touchmove', function(e) {
+            if (e.touches.length === 2) {
+                e.preventDefault();
+                const currentDistance = getDistance(e.touches[0], e.touches[1]);
+                scale = currentScale * (currentDistance / initialDistance);
+                lightboxImg.style.transform = `scale(${scale})`;
+            }
+        });
+        
+        function getDistance(touch1, touch2) {
+            return Math.sqrt(
+                Math.pow(touch2.clientX - touch1.clientX, 2) +
+                Math.pow(touch2.clientY - touch1.clientY, 2)
+            );
+        }
         
         // Close lightbox
         lightboxClose.addEventListener('click', closeLightbox);
@@ -1186,78 +1148,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 closeLightbox();
             }
         });
-        
-        function startDragging(e) {
-            if (scale <= 1) return;
-            
-            isDragging = true;
-            startX = e.clientX - posX;
-            startY = e.clientY - posY;
-            lightboxContent.style.cursor = 'grabbing';
-            lightboxContent.classList.add('grabbing');
-            
-            document.addEventListener('mousemove', drag);
-            document.addEventListener('mouseup', stopDragging);
-        }
-        
-        function startDraggingTouch(e) {
-            if (scale <= 1) return;
-            
-            isDragging = true;
-            const touch = e.touches[0];
-            startX = touch.clientX - posX;
-            startY = touch.clientY - posY;
-            lightboxContent.style.cursor = 'grabbing';
-            lightboxContent.classList.add('grabbing');
-            
-            document.addEventListener('touchmove', dragTouch);
-            document.addEventListener('touchend', stopDragging);
-        }
-        
-        function drag(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            
-            posX = e.clientX - startX;
-            posY = e.clientY - startY;
-            applyTransform();
-        }
-        
-        function dragTouch(e) {
-            if (!isDragging) return;
-            e.preventDefault();
-            
-            const touch = e.touches[0];
-            posX = touch.clientX - startX;
-            posY = touch.clientY - startY;
-            applyTransform();
-        }
-        
-        function stopDragging() {
-            isDragging = false;
-            lightboxContent.style.cursor = 'grab';
-            lightboxContent.classList.remove('grabbing');
-            
-            document.removeEventListener('mousemove', drag);
-            document.removeEventListener('touchmove', dragTouch);
-            document.removeEventListener('mouseup', stopDragging);
-            document.removeEventListener('touchend', stopDragging);
-        }
-        
-        function applyTransform() {
-            lightboxImg.style.transform = `translate(${posX}px, ${posY}px) scale(${scale})`;
-        }
-        
-        function resetZoomState() {
-            scale = 1;
-            posX = 0;
-            posY = 0;
-            applyTransform();
-        }
-        
-        function updateZoomInfo() {
-            zoomInfo.textContent = `${Math.round(scale * 100)}%`;
-        }
     }
     
     function closeLightbox() {
@@ -1285,15 +1175,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
     </script>
 <!-- Advanced Zoomable Lightbox -->
+<!-- Simple Zoom Lightbox -->
 <div class="lightbox" id="lightbox">
-    <div class="lightbox-content" id="lightboxContent">
-        <img class="lightbox-img" id="lightboxImg" src="" alt="Enlarged photo">
-        <div class="zoom-info" id="zoomInfo">100%</div>
-    </div>
-    <div class="lightbox-controls">
-        <button class="lightbox-btn" id="zoomInBtn" title="Zoom In">+</button>
-        <button class="lightbox-btn" id="zoomOutBtn" title="Zoom Out">−</button>
-        <button class="lightbox-btn" id="resetZoomBtn" title="Reset Zoom">↺</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Enlarged photo">
+    <div class="desktop-zoom-controls">
+        <button class="zoom-btn" id="zoomInBtn" title="Zoom In">+</button>
+        <button class="zoom-btn" id="zoomOutBtn" title="Zoom Out">−</button>
     </div>
     <button class="lightbox-close" id="lightboxClose">&times;</button>
 </div>
